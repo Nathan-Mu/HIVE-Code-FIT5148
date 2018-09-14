@@ -1,0 +1,11 @@
+select m.firstname, m.lastname, m.birthyear, m.birthmon, m.birthday,
+ m.birthcountry, c.max_number
+from master m
+join (select coachid, max_number
+   from (select max(n.number) as max_number from (select count(*) as number
+      	from awards_coaches
+      	group by coachid) n) n1
+   join (select coachid, count(*) as number from awards_coaches
+   group by coachid) n
+   on (n.number = n1.max_number)) c
+on m.coachid = c.coachid;

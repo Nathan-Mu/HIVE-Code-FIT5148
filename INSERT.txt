@@ -1,0 +1,137 @@
+insert overwrite table awards_players
+SELECT
+regexp_extract(col_value,'^(?:([^,]*)\,?){1}',1) playerID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){2}',1) award,
+regexp_extract(col_value,'^(?:([^,]*)\,?){3}',1) year,
+regexp_extract(col_value,'^(?:([^,]*)\,?){4}',1) lgID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){5}',1) note,
+regexp_extract(col_value,'^(?:([^,]*)\,?){6}',1) pos
+from tmp_awards_players;
+
+insert overwrite table coaches
+SELECT
+regexp_extract(col_value,'^(?:([^,]*)\,?){1}',1) coachID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){2}',1) year,
+regexp_extract(col_value,'^(?:([^,]*)\,?){3}',1) tmID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){4}',1) lgID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){5}',1) stint,
+regexp_extract(col_value,'^(?:([^,]*)\,?){6}',1) notes,
+regexp_extract(col_value,'^(?:([^,]*)\,?){7}',1) g,
+regexp_extract(col_value,'^(?:([^,]*)\,?){8}',1) w,
+regexp_extract(col_value,'^(?:([^,]*)\,?){9}',1) l,
+regexp_extract(col_value,'^(?:([^,]*)\,?){10}',1) t,
+regexp_extract(col_value,'^(?:([^,]*)\,?){11}',1) postg,
+regexp_extract(col_value,'^(?:([^,]*)\,?){12}',1) postw,
+regexp_extract(col_value,'^(?:([^,]*)\,?){13}',1) postl,
+regexp_extract(col_value,'^(?:([^,]*)\,?){14}',1) postt
+from tmp_coaches;
+
+insert overwrite table scoring
+SELECT
+regexp_extract(col_value,'^(?:([^,]*)\,?){1}',1) playerID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){2}',1) year,
+regexp_extract(col_value,'^(?:([^,]*)\,?){3}',1) stint,
+regexp_extract(col_value,'^(?:([^,]*)\,?){4}',1) tmID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){5}',1) lgID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){6}',1) pos,
+regexp_extract(col_value,'^(?:([^,]*)\,?){7}',1) GP,
+regexp_extract(col_value,'^(?:([^,]*)\,?){8}',1) G,
+regexp_extract(col_value,'^(?:([^,]*)\,?){9}',1) A,
+regexp_extract(col_value,'^(?:([^,]*)\,?){10}',1) Pts,
+regexp_extract(col_value,'^(?:([^,]*)\,?){11}',1) PIM,
+regexp_extract(col_value,'^(?:([^,]*)\,?){12}',1) offset,
+regexp_extract(col_value,'^(?:([^,]*)\,?){13}',1) PPG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){14}',1) PPA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){15}',1) SHG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){16}',1) SHA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){17}',1) GWG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){18}',1) GTG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){19}',1) SOG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){20}',1) PostGP,
+regexp_extract(col_value,'^(?:([^,]*)\,?){21}',1) PostG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){22}',1) PostA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){23}',1) PostPts,
+regexp_extract(col_value,'^(?:([^,]*)\,?){24}',1) PostPIM,
+regexp_extract(col_value,'^(?:([^,]*)\,?){25}',1) Post_offset,
+regexp_extract(col_value,'^(?:([^,]*)\,?){26}',1) PostPPG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){27}',1) PostPPA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){28}',1) PostSHG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){29}',1) PostSHA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){30}',1) PostGWG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){31}',1) PostSOG
+from tmp_scoring;
+
+insert overwrite table awards_coaches
+SELECT
+regexp_extract(col_value,'^(?:([^,]*)\,?){1}',1) coachID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){2}',1) award,
+regexp_extract(col_value,'^(?:([^,]*)\,?){3}',1) year,
+regexp_extract(col_value,'^(?:([^,]*)\,?){4}',1) lgID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){5}',1) note
+from tmp_awards_coaches;
+
+insert overwrite table teams
+SELECT
+regexp_extract(col_value,'^(?:([^,]*)\,?){1}',1) year,
+regexp_extract(col_value,'^(?:([^,]*)\,?){2}',1) lgID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){3}',1) tmID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){4}',1) franchID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){5}',1) confID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){6}',1) divID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){7}',1) rank,
+regexp_extract(col_value,'^(?:([^,]*)\,?){8}',1) playoff,
+regexp_extract(col_value,'^(?:([^,]*)\,?){9}',1) G,
+regexp_extract(col_value,'^(?:([^,]*)\,?){10}',1) W,
+regexp_extract(col_value,'^(?:([^,]*)\,?){11}',1) L,
+regexp_extract(col_value,'^(?:([^,]*)\,?){12}',1) T,
+regexp_extract(col_value,'^(?:([^,]*)\,?){13}',1) OTL,
+regexp_extract(col_value,'^(?:([^,]*)\,?){14}',1) Pts,
+regexp_extract(col_value,'^(?:([^,]*)\,?){15}',1) SoW,
+regexp_extract(col_value,'^(?:([^,]*)\,?){16}',1) SoL,
+regexp_extract(col_value,'^(?:([^,]*)\,?){17}',1) GF,
+regexp_extract(col_value,'^(?:([^,]*)\,?){18}',1) GA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){19}',1) name,
+regexp_extract(col_value,'^(?:([^,]*)\,?){20}',1) PIM,
+regexp_extract(col_value,'^(?:([^,]*)\,?){21}',1) BenchMinor,
+regexp_extract(col_value,'^(?:([^,]*)\,?){22}',1) PPG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){23}',1) PPC,
+regexp_extract(col_value,'^(?:([^,]*)\,?){24}',1) SHA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){25}',1) PKG,
+regexp_extract(col_value,'^(?:([^,]*)\,?){26}',1) PKC,
+regexp_extract(col_value,'^(?:([^,]*)\,?){27}',1) SHF
+from tmp_teams;
+
+insert overwrite table master
+SELECT
+regexp_extract(col_value,'^(?:([^,]*)\,?){1}',1) playerID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){2}',1) coachID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){3}',1) hofID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){4}',1) firstName,
+regexp_extract(col_value,'^(?:([^,]*)\,?){5}',1) lastName,
+regexp_extract(col_value,'^(?:([^,]*)\,?){6}',1) nameNote,
+regexp_extract(col_value,'^(?:([^,]*)\,?){7}',1) nameGiven,
+regexp_extract(col_value,'^(?:([^,]*)\,?){8}',1) nameNick,
+regexp_extract(col_value,'^(?:([^,]*)\,?){9}',1) height,
+regexp_extract(col_value,'^(?:([^,]*)\,?){10}',1) weight,
+regexp_extract(col_value,'^(?:([^,]*)\,?){11}',1) shootCatch,
+regexp_extract(col_value,'^(?:([^,]*)\,?){12}',1) legendsID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){13}',1) ihdbID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){14}',1) hrefID,
+regexp_extract(col_value,'^(?:([^,]*)\,?){15}',1) firstNHL,
+regexp_extract(col_value,'^(?:([^,]*)\,?){16}',1) lastNHL,
+regexp_extract(col_value,'^(?:([^,]*)\,?){17}',1) firstWHA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){18}',1) lastWHA,
+regexp_extract(col_value,'^(?:([^,]*)\,?){19}',1) pos,
+regexp_extract(col_value,'^(?:([^,]*)\,?){20}',1) birthYear,
+regexp_extract(col_value,'^(?:([^,]*)\,?){21}',1) birthMon,
+regexp_extract(col_value,'^(?:([^,]*)\,?){22}',1) birthDay,
+regexp_extract(col_value,'^(?:([^,]*)\,?){23}',1) birthCountry,
+regexp_extract(col_value,'^(?:([^,]*)\,?){24}',1) birthState,
+regexp_extract(col_value,'^(?:([^,]*)\,?){25}',1) birthCity,
+regexp_extract(col_value,'^(?:([^,]*)\,?){26}',1) deathYear,
+regexp_extract(col_value,'^(?:([^,]*)\,?){27}',1) deathMon,
+regexp_extract(col_value,'^(?:([^,]*)\,?){28}',1) deathDay,
+regexp_extract(col_value,'^(?:([^,]*)\,?){29}',1) deathCountry,
+regexp_extract(col_value,'^(?:([^,]*)\,?){30}',1) deathState,
+regexp_extract(col_value,'^(?:([^,]*)\,?){31}',1) deathCity
+from tmp_master;

@@ -1,0 +1,31 @@
+create table master(playerID String,coachID String,hofID String,firstName String,
+					lastName String,nameNote String,nameGiven String,nameNick String,
+					height int,weight int,shootCatch  String,legendsID String,
+					ihdbID int,hrefID String,firstNHL int,lastNHL int,firstWHA int,
+					lastWHA int,pos String,birthYear int,birthMon int,birthDay int,
+					birthCountry String,birthState String,birthCity String,
+					deathYear int,deathMon int,deathDay int,deathCountry String,
+					deathState String,deathCity String);
+
+create table awards_players(playerID String,award String,year int,lgID String,
+							note String,pos String);
+
+create table awards_coaches(coachID String,award String,year int,lgID String,
+							note String);
+
+create table scoring(playerID String,year int,stint int,tmID String,lgID String,
+					 pos String,GP int,G int,A int,Pts int,PIM int,offset int,
+					 PPG int,PPA int,SHG int,SHA int,GWG int,GTG int,SOG int,
+					 PostGP int,PostG int,PostA int,PostPts int,PostPIM int,
+					 Post_offset int,PostPPG int,PostPPA int,PostSHG int,
+					 PostSHA int,PostGWG int,PostSOG int);
+
+create table teams(year int,lgID String,tmID String,franchID String,confID String,
+				   divID String,rank int,playoff String,G int,W int,L int,T int,
+				   OTL int,Pts int,SoW int,SoL int,GF int,GA int,name String,
+				   PIM int,BenchMinor int,PPG int,PPC int,SHA int,PKG int,PKC int,
+				   SHF int);
+
+create table coaches(coachID String,year int,tmID String,lgID String,stint int,
+					 notes String,g int,w int,l int,t int,postg int,postw int,
+					 postl int,postt int);

@@ -1,0 +1,11 @@
+select m.firstname, m.lastname, n1.max_number
+from (select ap.playerid, n.max_number
+		from (select max(ap.number) as max_number
+	  		from (select playerid, count(*) as number from awards_players group by playerid) ap
+	  		join (select s.playerid
+					from scoring s 
+					join (select max(gwg) gwg from scoring) s1 
+					on (s.gwg = s1.gwg)) s2 on ap.playerid = s2.playerid) n
+		join (select playerid, count(*) as number from awards_players group by playerid) ap 
+		on (ap.number = n.max_number)) n1
+join master m on (n1.playerid = m.playerid);

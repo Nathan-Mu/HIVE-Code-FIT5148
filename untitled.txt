@@ -1,0 +1,46 @@
+select t.name, m.firstname, m.lastname, n5.max_number_per_team, n6.total_wins
+from
+(
+  select n3.tmid, n4.coachid, n3.max_number_per_team
+  from 
+  (
+	select n2.tmid, max(n2.number_of_awards) as max_number_per_team
+	from
+	(
+	  select n1.tmid, n1.coachid, count(n1.coachid) as number_of_awards
+	  from 
+	  (
+		select c.tmid, c.year, c.coachid 
+		from coaches c 
+		join (select year, coachid from awards_coaches) n
+		on (c.year = n.year and c.coachid = n.coachid)
+	  ) n1 
+	  group by n1.tmid, n1.coachid
+	) n2
+	group by tmid
+  ) n3
+  join 
+  (
+	select n1.tmid, n1.coachid, count(n1.coachid) as number_of_awards
+	from 
+	(
+	  select c.tmid, c.year, c.coachid 
+	  from coaches c 
+	  join (select year, coachid from awards_coaches) n
+	  on (c.year = n.year and c.coachid = n.coachid)
+	) n1 group by n1.tmid, n1.coachid
+  ) n4
+  on (n3.tmid = n4.tmid and n3.max_number_per_team = n4.number_of_awards)
+) n5
+join 
+(
+  select c.tmid, c.coachid, sum(ts.w) as total_wins
+  from teams ts
+  join coaches c
+  on (ts.tmid = c.tmid and ts.year = c.year)
+  group by c.tmid, c.coachid
+) n6
+on (n5.tmid = n6.tmid and n5.coachid = n6.coachid)
+join master m on (m.coachid = n5.coachid)
+join (select distinct tmid, name from teams) t on (t.tmid = n5.tmid)
+where m.firstname != 'firstname';

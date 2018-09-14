@@ -1,0 +1,7 @@
+select s.year, m.firstname, m.lastname, m.birthyear, m.birthmon, m.birthday, 
+	m.birthcountry, t.name, t.lgid, m.pos, s.gwg 
+from scoring s
+join (select max(gwg) gwg from scoring) s1 on (s.gwg = s1.gwg)
+join (select distinct tmid, name, lgid from teams) t on (s.tmid = t.tmid)
+join master m on (s.playerid = m.playerid)
+order by s.year;

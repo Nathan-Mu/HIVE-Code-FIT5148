@@ -1,0 +1,6 @@
+DROP TABLE tmp_awards_players;
+DROP TABLE tmp_master;
+drop table tmp_awards_coaches;
+drop table tmp_scoring;
+drop table tmp_teams;
+drop table tmp_coaches;

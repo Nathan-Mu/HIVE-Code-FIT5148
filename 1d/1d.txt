@@ -1,0 +1,9 @@
+select ap.award, ap.year, s.pts
+from awards_players ap
+join (select playerid
+   from master
+   where firstname = 'Phil' and lastname = 'Esposito') p
+on (ap.playerid = p.playerid)
+join scoring s
+on (s.playerid = ap.playerid and s.year = ap.year)
+order by ap.year;

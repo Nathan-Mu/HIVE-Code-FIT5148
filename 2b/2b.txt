@@ -1,0 +1,7 @@
+select m.firstname, m.lastname, c.year, c.g, c.w, c.l, c.t from
+(select min(n.w) as second_w from
+(select distinct w
+ from coaches order
+ by w desc limit 2) n) n2
+join coaches c on (n2.second_w = c.w)
+join master m on (m.coachid = c.coachid);

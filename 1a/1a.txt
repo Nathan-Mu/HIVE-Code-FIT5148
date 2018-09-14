@@ -1,0 +1,6 @@
+select s.year, m.firstname, m.lastname, m.pos, s.pts
+from scoring s
+join (select year, max(pts) pts from scoring group by year 
+	  having year >= 1980 and year <= 2011) s1 
+on (s.year = s1.year and s.pts = s1.pts)
+join master m on (m.playerid = s.playerid);

@@ -1,0 +1,6 @@
+LOAD DATA INPATH '/tmp/FIT5148/Master.csv' OVERWRITE INTO TABLE tmp_master;
+LOAD DATA INPATH '/tmp/FIT5148/Scoring.csv' OVERWRITE INTO TABLE tmp_scoring;
+LOAD DATA INPATH '/tmp/FIT5148/AwardsPlayers.csv' OVERWRITE INTO TABLE tmp_awards_players;
+LOAD DATA INPATH '/tmp/FIT5148/AwardsCoaches.csv' OVERWRITE INTO TABLE tmp_awards_coaches;
+LOAD DATA INPATH '/tmp/FIT5148/Coaches.csv' OVERWRITE INTO TABLE tmp_coaches;
+LOAD DATA INPATH '/tmp/FIT5148/Teams.csv' OVERWRITE INTO TABLE tmp_teams;

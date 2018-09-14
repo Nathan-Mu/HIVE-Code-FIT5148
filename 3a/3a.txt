@@ -1,0 +1,6 @@
+select t1.name, t2.total_w, t2.total_l, t2.total_t
+from (select distinct tmid, name from teams) t1
+join (select tmid, name, sum(w) as total_w, sum(l) as total_l,
+sum(t) as total_t from teams group by tmid, name) t2
+on (t1.tmid = t2.tmid and t1.name = t2.name)
+where t1.name != 'name';

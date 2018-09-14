@@ -1,0 +1,4 @@
+s.year,m.firstname,m.lastname,m.birthyear,m.birthmon,m.birthday,m.birthcountry,t.name,t.lgid,m.pos,s.gwg
+1970,Phil,Esposito,1942,2,20,Canada,Boston Bruins,NHL,C,16
+1971,Phil,Esposito,1942,2,20,Canada,Boston Bruins,NHL,C,16
+1983,Michel,Goulet,1960,4,21,Canada,Quebec Nordiques,NHL,L,16
